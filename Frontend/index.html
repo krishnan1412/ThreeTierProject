@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>3-Tier Web App</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 50px; }
+    input, button { padding: 10px; margin: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the 3-Tier Web App</h1>
+  <input type="text" id="name" placeholder="Enter your name" />
+  <button onclick="submitName()">Submit</button>
+  <p id="response"></p>
+
+  <script>
+    async function submitName() {
+      const name = document.getElementById('name').value;
+      const res = await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name })
+      });
+      const data = await res.json();
+      document.getElementById('response').innerText = data.message;
+    }
+  </script>
+</body>
+</html>
