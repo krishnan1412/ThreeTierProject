@@ -4,7 +4,7 @@ const apiRoutes = require('./routes/api');
 const app = express();
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../frontend')));
+app.use(express.static(path.join(__dirname, '../Frontend')));
 app.use('/api', apiRoutes);
 
 const PORT = process.env.PORT || 3000;
